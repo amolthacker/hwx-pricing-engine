@@ -27,7 +27,7 @@ Please refer to the documentation to meet the prerequisites and setup credential
 
 6. Once cluster is up, update `yarn-site.xml` and `container-executor.cfg` with configurations under `conf/` to enable Docker on YARN and restart YARN
 
-7. SSH into the cluster gateway node and download the following from repo:
+7. SSH into the cluster gateway node and download the following from repo
 
     [`compute/compute-engine-spark-1.0.0.jar`](https://github.com/amolthacker/hwx-pricing-engine/blob/master/compute/compute-engine-spark-0.1.0.jar)
     ```
@@ -54,8 +54,30 @@ Please refer to the documentation to meet the prerequisites and setup credential
              --supervise --driver-memory 4g --driver-library-path /usr/local/lib \
              --class com.hwx.pe.valengine.spark.Valengine $appJAR $metric $numTrades $numSplits
     ```
+    This uses the pre-built Docker image: [`amolthacker/qlib`](https://hub.docker.com/r/amolthacker/qlib/)
 
-8. Compute price
+8. Alternatively, you can build the project and the Docker image as follows:
+    * Clone the repo
+    ```
+    $ git clone https://github.com/amolthacker/hwx-pricing-engine.git
+    ```
+    * Add the provided `QuantLib.jar` to local Maven repo
+    ```
+    $ cd hwx-pricing-engine/compute
+    $ mvn install:install-file -Dfile=lib/QuantLib.jar -DgroupId=org.quantlib -DartifactId=ql -Dversion=1.9 -Dpackaging=jar
+    ```
+    * Build the project
+    ```
+    $ mvn clean package
+    ```
+    * Build the Docker image
+    ```
+    $ cd hwx-pricing-engine/docker
+    $ sudo docker build -t qlib .
+    ```
+    * Update `compute/scripts/compute-price.sh` script to use the JAR and Docker image built above
+
+9. Compute price
     ```
     $ ./compute-price.sh <metric> <numTrades> <numSplits>
     ```
