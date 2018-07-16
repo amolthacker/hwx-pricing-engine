@@ -7,5 +7,13 @@ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/dock
 # Install Docker CE
 sudo yum install -y docker-ce
 
+# Keep containers alive during daemon downtime, enable debug logging
+cat >> /etc/docker/daemon.json << EOF
+{
+  "live-restore": true,
+  "debug": true
+}
+EOF
+
 # Start Docker
 sudo systemctl start docker
