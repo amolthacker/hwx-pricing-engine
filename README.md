@@ -1,5 +1,5 @@
 # hwx-pricing-engine
-<<<<<<< HEAD
+
 A distributed compute engine for pricing financial derivatives using QuantLib with Spark running in Docker containers on YARN with HDP 3.0.
 
 ![architecture](images/hwxpe-ql-spark-docker-yarn.png)
@@ -68,12 +68,4 @@ Please refer to the documentation to meet the prerequisites and setup credential
     ```
     $ ./compute-price.sh OptionPV 5000 20
     ```
-
-
-
-
-
-
-=======
-Distributed compute engine for pricing financial derivative instruments (Swaps, Options etc) w/ Dockerized Spark on YARN
->>>>>>> 1d5f7d4481014a052689b932a6f4469b72d632b9
+    
