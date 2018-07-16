@@ -61,7 +61,7 @@ Please refer to the documentation to meet the prerequisites and setup credential
     ```
     where `metric`:
      * `FwdRate`: Spot Price of Forward Rate Agreement (FRA)
-     * `NPV`: Net Present Value of a vanilla fixed-float Interest Rate Swap (IRS
+     * `NPV`: Net Present Value of a vanilla fixed-float Interest Rate Swap (IRS)
      * `OptionPV`: Net Present Value of a European Equity Put Option average over multiple algorithmic calcs (Black-Scholes, Binomial, Monte Carlo)
 
     eg:
