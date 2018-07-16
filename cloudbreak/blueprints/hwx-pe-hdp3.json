@@ -1,0 +1,245 @@
+{
+    "Blueprints": {
+      "blueprint_name": "hdp30-data-science-spark2-v4",
+      "stack_name": "HDP",
+      "stack_version": "3.0"
+    },
+    "settings": [
+      {
+        "recovery_settings": [
+          {
+            "recovery_enabled": "true"
+          }
+        ]
+      },
+      {
+        "service_settings": [
+          {
+            "name": "HIVE",
+            "credential_store_enabled": "false"
+          }
+        ]
+      },
+      {
+        "component_settings": []
+      }
+    ],
+    "configurations": [
+      {
+        "core-site": {
+          "fs.trash.interval": "4320",
+          "proxyuser_group": "hadoop",
+          "hadoop.proxyuser.falcon.groups": "*",
+          "hadoop.proxyuser.root.groups": "*",
+          "hadoop.proxyuser.livy.hosts": "*",
+          "hadoop.proxyuser.falcon.hosts": "*",
+          "hadoop.proxyuser.oozie.hosts": "*",
+          "hadoop.proxyuser.hcat.hosts": "*",
+          "hadoop.proxyuser.oozie.groups": "*",
+          "hadoop.proxyuser.hive.groups": "*",
+          "hadoop.proxyuser.hcat.groups": "*",
+          "hadoop.proxyuser.livy.groups": "*",
+          "hadoop.proxyuser.hbase.groups": "*",
+          "hadoop.proxyuser.hbase.hosts": "*",
+          "hadoop.proxyuser.root.hosts": "*",
+          "hadoop.proxyuser.hive.hosts": "*"
+        }
+      },
+      {
+        "hdfs-site": {
+          "dfs.namenode.safemode.threshold-pct": "0.99",
+          "dfs.journalnode.edits.dir": "/hadoopfs/fs1/hdfs/journalnode",
+          "dfs.namenode.name.dir": "/hadoopfs/fs1/hdfs/namenode",
+          "dfs.namenode.checkpoint.dir": "/hadoopfs/fs1/hdfs/namesecondary"
+        }
+      },
+      {
+        "hive-site": {
+          "hive.exec.compress.output": "true",
+          "hive.merge.mapfiles": "true",
+          "hive.server2.tez.initialize.default.sessions": "true",
+          "hive.server2.transport.mode": "http"
+        }
+      },
+      {
+        "mapred-site": {
+          "mapreduce.job.reduce.slowstart.completedmaps": "0.7",
+          "mapreduce.map.output.compress": "true",
+          "mapreduce.output.fileoutputformat.compress": "true"
+        }
+      },
+      {
+        "yarn-site": {
+          "yarn.acl.enable": "true",
+          "yarn.timeline-service.leveldb-timeline-store.path": "/hadoopfs/fs1/yarn/timeline"
+        }
+      },
+      {
+        "zeppelin-shiro-ini": {
+          "properties": {
+            "shiro_ini_content": "[users]\n# List of users with their password allowed to access Zeppelin.\n# To use a different strategy (LDAP / Database / ...) check the shiro doc at http://shiro.apache.org/configuration.html#Configuration-INISections\n\nadmin = Hadoop3_1\n\n# Sample LDAP configuration, for user Authentication, currently tested for single Realm\n[main]\n\nsessionManager = org.apache.shiro.web.session.mgt.DefaultWebSessionManager\nsecurityManager.sessionManager = $sessionManager\n# 86,400,000 milliseconds = 24 hour\nsecurityManager.sessionManager.globalSessionTimeout = 86400000\nshiro.loginUrl = /api/login\n\n[urls]\n# anon means the access is anonymous.\n# authcBasic means Basic Auth Security\n# To enfore security, comment the line below and uncomment the next one\n/api/version = anon\n#/** = anon\n/** = authc"
+          }
+        }
+      },
+      {
+        "cluster-env": {
+          "properties": {
+            "recovery_enabled": "true",
+            "commands_to_retry": "START",
+            "recovery_type": "AUTO_START"
+          }
+        }
+      },
+      {
+        "hbase-site": {
+          "properties": {
+            "zookeeper.recovery.retry": "10"
+          }
+        }
+      },
+      {
+        "zoo.cfg": {
+          "properties": {
+            "dataDir": "/hadoopfs/fs1/zookeeper"
+          }
+        }
+      },
+      {
+        "ams-hbase-site": {
+          "properties": {
+            "hbase.wal.dir": "file:///hadoopfs/fs1/metrics/hbase/wal",
+            "hbase.tmp.dir": "/hadoopfs/fs1/metrics/hbase-tmp"
+          }
+        }
+      },
+      {
+        "ams-site": {
+          "properties": {
+            "timeline.metrics.aggregator.checkpoint.dir": "/hadoopfs/fs1/metrics/checkpoint"
+          }
+        }
+      }
+    ],
+    "host_groups": [
+      {
+        "name": "master",
+        "configurations": [],
+        "components": [
+          {
+            "name": "APP_TIMELINE_SERVER"
+          },
+          {
+            "name": "HDFS_CLIENT"
+          },
+          {
+            "name": "HISTORYSERVER"
+          },
+          {
+            "name": "HIVE_CLIENT"
+          },
+          {
+            "name": "HIVE_METASTORE"
+          },
+          {
+            "name": "HIVE_SERVER"
+          },
+          {
+            "name": "JOURNALNODE"
+          },
+          {
+            "name": "MAPREDUCE2_CLIENT"
+          },
+          {
+            "name": "METRICS_COLLECTOR"
+          },
+          {
+            "name": "METRICS_MONITOR"
+          },
+          {
+            "name": "NAMENODE"
+          },
+          {
+            "name": "RESOURCEMANAGER"
+          },
+          {
+            "name": "SECONDARY_NAMENODE"
+          },
+          {
+            "name": "LIVY2_SERVER"
+          },
+          {
+            "name": "SPARK2_CLIENT"
+          },
+          {
+            "name": "SPARK2_JOBHISTORYSERVER"
+          },
+          {
+            "name": "TEZ_CLIENT"
+          },
+          {
+            "name": "YARN_CLIENT"
+          },
+          {
+            "name": "ZEPPELIN_MASTER"
+          },
+          {
+            "name": "ZOOKEEPER_CLIENT"
+          },
+          {
+            "name": "ZOOKEEPER_SERVER"
+          },
+          {
+            "name": "KNOX_GATEWAY"
+          }
+        ],
+        "cardinality": "1"
+      },
+      {
+        "name": "worker",
+        "configurations": [],
+        "components": [
+          {
+            "name": "HIVE_CLIENT"
+          },
+          {
+            "name": "TEZ_CLIENT"
+          },
+          {
+            "name": "SPARK2_CLIENT"
+          },
+          {
+            "name": "DATANODE"
+          },
+          {
+            "name": "METRICS_MONITOR"
+          },
+          {
+            "name": "NODEMANAGER"
+          }
+        ],
+        "cardinality": "1+"
+      },
+      {
+        "name": "compute",
+        "configurations": [],
+        "components": [
+          {
+            "name": "HIVE_CLIENT"
+          },
+          {
+            "name": "TEZ_CLIENT"
+          },
+          {
+            "name": "SPARK2_CLIENT"
+          },
+          {
+            "name": "METRICS_MONITOR"
+          },
+          {
+            "name": "NODEMANAGER"
+          }
+        ],
+        "cardinality": "1+"
+      }
+    ]
+  }

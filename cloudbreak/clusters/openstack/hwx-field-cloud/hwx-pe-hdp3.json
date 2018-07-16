@@ -1,0 +1,143 @@
+{
+  "inputs": {
+    "custom": {}
+  },
+  "general": {
+    "credentialName": "hwx-field-cloud",
+    "name": "art-hwx-pe"
+  },
+  "placement": {
+    "region": "RegionOne",
+    "availabilityZone": "SE"
+  },
+  "tags": {
+    "userDefinedTags": {}
+  },
+  "customDomain": {
+    "customDomain": "field.hortonworks.com",
+    "customHostname": "art"
+  },
+  "cluster": {
+    "ambari": {
+      "blueprintName": "HDP 3.0 - Data Science: Apache Spark 2, Apache Zeppelin",
+      "platformVersion": "HDP 3.0",
+      "ambariRepoDetailsJson": {
+        "version": "2.7.0.0-821",
+        "baseUrl": "http://private-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.7.0.0-821",
+        "gpgKeyUrl": "http://private-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.7.0.0-821/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins"
+      },
+      "ambariStackDetails": {
+        "version": "3.0",
+        "verify": false,
+        "enableGplRepo": false,
+        "stack": "HDP",
+        "repositoryVersion": "3.0.0.0-1574",
+        "versionDefinitionFileUrl": "http://private-repo-1.hortonworks.com/HDP/centos7/3.x/updates/3.0.0.0-1574/HDP-3.0.0.0-1574.xml",
+        "stackOs": "centos7",
+        "mpacks": []
+      },
+      "gateway": {
+        "enableGateway": true,
+        "topologies": [
+          {
+            "topologyName": "proxy",
+            "exposedServices": [
+              "AMBARI",
+              "ALL"
+            ]
+          }
+        ],
+        "ssoType": "NONE"
+      },
+      "userName": "admin",
+      "password": "Hadoop3_1",
+      "validateBlueprint": false,
+      "ambariSecurityMasterKey": "",
+      "enableSecurity": false
+    },
+    "sharedService": {},
+    "rdsConfigNames": []
+  },
+  "imageSettings": {
+    "imageCatalog": "cloudbreak-default",
+    "imageId": "8246c970-5f2f-4e23-5dd5-85d46d104091"
+  },
+  "imageType": "base",
+  "instanceGroups": [
+    {
+      "parameters": {},
+      "template": {
+        "parameters": {
+          "encrypted": false
+        },
+        "instanceType": "m3.2xlarge",
+        "volumeType": "HDD",
+        "volumeCount": 0,
+        "volumeSize": 100
+      },
+      "nodeCount": 1,
+      "group": "master",
+      "type": "GATEWAY",
+      "recoveryMode": "MANUAL",
+      "recipeNames": [
+        "install-docker",
+        "setup-hive-db"
+      ],
+      "securityGroup": {
+        "securityGroupId": "976f2024-2b4b-46ff-b711-73df3c549acb"
+      }
+    },
+    {
+      "parameters": {},
+      "template": {
+        "parameters": {
+          "encrypted": false
+        },
+        "instanceType": "m3.xlarge",
+        "volumeType": "HDD",
+        "volumeCount": 0,
+        "volumeSize": 100
+      },
+      "nodeCount": 3,
+      "group": "worker",
+      "type": "CORE",
+      "recoveryMode": "MANUAL",
+      "recipeNames": [
+        "install-docker"
+      ],
+      "securityGroup": {
+        "securityGroupId": "06db5e6c-3393-4be6-832d-b1be6645ddfa"
+      }
+    },
+    {
+      "parameters": {},
+      "template": {
+        "parameters": {
+          "encrypted": false
+        },
+        "instanceType": "d2.medium",
+        "volumeType": "HDD",
+        "volumeCount": 0,
+        "volumeSize": 100
+      },
+      "nodeCount": 0,
+      "group": "compute",
+      "type": "CORE",
+      "recoveryMode": "MANUAL",
+      "recipeNames": [],
+      "securityGroup": {
+        "securityGroupId": "39d82dde-eb39-42ae-9601-7e0c9e5c2bba"
+      }
+    }
+  ],
+  "network": {
+    "parameters": {
+      "subnetId": "aa7c8bb9-0152-46b9-8596-935baca704a0",
+      "networkingOption": "provider",
+      "networkId": "71a870bb-191c-4abe-bf02-ece2e9b3345c"
+    }
+  },
+  "stackAuthentication": {
+    "publicKeyId": "art"
+  }
+}

@@ -1,0 +1,10 @@
+# compiled code 
+target
+*.class
+
+# VSCode
+.vscode
+.DS_Store
+
+
+
