@@ -29,12 +29,12 @@ Please refer to the documentation to meet the prerequisites and setup credential
 
 7. SSH into the cluster gateway node and download the following from repo:
 
-    `compute/compute-engine-spark-1.0.0.jar`
+    [`compute/compute-engine-spark-1.0.0.jar`](https://github.com/amolthacker/hwx-pricing-engine/blob/master/compute/compute-engine-spark-0.1.0.jar)
     ```
-    wget https://github.com/amolthacker/hwx-pricing-engine/raw/master/compute/compute-engine-spark-1.0.0.jar
+    wget https://github.com/amolthacker/hwx-pricing-engine/blob/master/compute/compute-engine-spark-0.1.0.jar
     ```
 
-    `compute/scripts/compute-price.sh`
+    [`compute/scripts/compute-price.sh`](https://github.com/amolthacker/hwx-pricing-engine/blob/master/compute/scripts/compute-price.sh)
     ```
     #!/bin/bash
 
