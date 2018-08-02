@@ -84,6 +84,7 @@ Please refer to the documentation to meet the prerequisites and setup credential
     $ ./compute-price.sh <metric> <numTrades> <numSplits>
     ```
     where `metric`:
+    
      * `FwdRate`: Spot Price of Forward Rate Agreement (FRA)
      * `NPV`: Net Present Value of a vanilla fixed-float Interest Rate Swap (IRS)
      * `OptionPV`: Net Present Value of a European Equity Put Option average over multiple algorithmic calcs (Black-Scholes, Binomial, Monte Carlo)
@@ -94,4 +95,6 @@ Please refer to the documentation to meet the prerequisites and setup credential
     ```
     
 ## Credits & References
-https://www.quantlib.org/ and examples by [Luigi Ballabio](https://www.linkedin.com/in/luigiballabio/)
+[QuantLib](https://www.quantlib.org/) and examples by [Luigi Ballabio](https://www.linkedin.com/in/luigiballabio/)
+[Containerized Applications on Apache Hadoop YARN 3.1](https://hortonworks.com/blog/trying-containerized-applications-apache-hadoop-yarn-3-1/)
+[Containerized Apache Spark on YARN](https://hortonworks.com/blog/containerized-apache-spark-yarn-apache-hadoop-3-1/)
