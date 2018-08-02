@@ -94,4 +94,4 @@ Please refer to the documentation to meet the prerequisites and setup credential
     ```
     
 ## Credits & References
-https://www.quantlib.org/ and examples by [Luigi Ballabio](https://github.com/lballabio)
+https://www.quantlib.org/ and examples by [Luigi Ballabio](https://www.linkedin.com/in/luigiballabio/)
