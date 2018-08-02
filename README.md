@@ -1,6 +1,7 @@
 # hwx-pricing-engine
 
 A distributed compute engine for pricing financial derivatives using QuantLib with Spark running in Docker containers on YARN with HDP 3.0.
+See the [HCC article](https://community.hortonworks.com/articles/202559/distributed-pricing-engine-using-dockerized-spark.html) for more details.
 
 ![architecture](images/hwxpe-ql-spark-docker-yarn.png)
 
@@ -18,7 +19,6 @@ Please refer to the documentation to meet the prerequisites and setup credential
 4. Upload the following to your Cloudbreak instance:
     * Ambari Blueprint: `cloudbreak/blueprints/hwx-pe-hdp3.json`
     * Recipe to install Docker CE with custom Docker daemon settings: `cloudbreak/recipes/pre-ambari/install-docker.sh`
-    * Recipe to setup Hive Metastore DB: `cloudbreak/recipes/pre-ambari/setup-hive-db.sh`
 
 5. Execute the following using Cloudbreak CLI to provision the cluster:
     ```
@@ -27,7 +27,9 @@ Please refer to the documentation to meet the prerequisites and setup credential
 
 6. Once cluster is up, update `yarn-site.xml` and `container-executor.cfg` with configurations under `conf/` to enable Docker on YARN and restart YARN
 
-7. SSH into the cluster gateway node and download the following from repo
+## Run
+
+1. SSH into the cluster gateway node and download the following from repo
 
     [`compute/compute-engine-spark-1.0.0.jar`](https://github.com/amolthacker/hwx-pricing-engine/blob/master/compute/compute-engine-spark-0.1.0.jar)
     ```
@@ -56,7 +58,7 @@ Please refer to the documentation to meet the prerequisites and setup credential
     ```
     This uses the pre-built Docker image: [`amolthacker/qlib`](https://hub.docker.com/r/amolthacker/qlib/)
 
-8. Alternatively, you can build the project and the Docker image as follows:
+2. Alternatively, you can build the project and the Docker image as follows:
     * Clone the repo
     ```
     $ git clone https://github.com/amolthacker/hwx-pricing-engine.git
@@ -77,7 +79,7 @@ Please refer to the documentation to meet the prerequisites and setup credential
     ```
     * Update `compute/scripts/compute-price.sh` script to use the JAR and Docker image built above
 
-9. Compute price
+3. Compute price
     ```
     $ ./compute-price.sh <metric> <numTrades> <numSplits>
     ```
@@ -91,3 +93,5 @@ Please refer to the documentation to meet the prerequisites and setup credential
     $ ./compute-price.sh OptionPV 5000 20
     ```
     
+## Credits & References
+https://www.quantlib.org/ and examples by [Luigi Ballabio](https://github.com/lballabio)
