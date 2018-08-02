@@ -95,6 +95,6 @@ Please refer to the documentation to meet the prerequisites and setup credential
     ```
     
 ## Credits & References
-[QuantLib](https://www.quantlib.org/) and examples by [Luigi Ballabio](https://www.linkedin.com/in/luigiballabio/)
-[Containerized Applications on Apache Hadoop YARN 3.1](https://hortonworks.com/blog/trying-containerized-applications-apache-hadoop-yarn-3-1/)
-[Containerized Apache Spark on YARN](https://hortonworks.com/blog/containerized-apache-spark-yarn-apache-hadoop-3-1/)
+* [QuantLib](https://www.quantlib.org/) and examples by [Luigi Ballabio](https://www.linkedin.com/in/luigiballabio/)
+* [Containerized Applications on Apache Hadoop YARN 3.1](https://hortonworks.com/blog/trying-containerized-applications-apache-hadoop-yarn-3-1/)
+* [Containerized Apache Spark on YARN](https://hortonworks.com/blog/containerized-apache-spark-yarn-apache-hadoop-3-1/)
