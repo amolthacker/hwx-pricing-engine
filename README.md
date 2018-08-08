@@ -13,8 +13,8 @@ Please refer to the documentation to meet the prerequisites and setup credential
 2. Clone this repo
 
 3. Update the following as desired:
-    * Infrastructure definition under cloudbreak/clusters/openstack/hwx-field-cloud/hwx-pe-hdp3.json. Ensure you refer to right Cloudbreak base image
-    * Ambari blueprint under cloudbreak/blueprints/hwx-pe-hdp3.json
+    * Infrastructure definition under `cloudbreak/clusters/openstack/hwx-field-cloud/hwx-pe-hdp3.json`. Ensure you refer to right Cloudbreak base image
+    * Ambari blueprint under `cloudbreak/blueprints/hwx-pe-hdp3.json`
 
 4. Upload the following to your Cloudbreak instance:
     * Ambari Blueprint: `cloudbreak/blueprints/hwx-pe-hdp3.json`
@@ -42,7 +42,7 @@ Please refer to the documentation to meet the prerequisites and setup credential
 
     metric=$1
     numTrades=$2
-    umSplits=$3
+    numSplits=$3
 
     appJAR='compute-engine-spark-0.1.0.jar'
     dockerImg='amolthacker/qlib'
