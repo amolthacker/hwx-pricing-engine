@@ -1,7 +1,7 @@
 # hwx-pricing-engine
 
 A distributed compute engine for pricing financial derivatives using QuantLib with Spark running in Docker containers on YARN with HDP 3.0.
-See the [HCC article](https://community.hortonworks.com/articles/202559/distributed-pricing-engine-using-dockerized-spark.html) for more details.
+See blog series - [Part 1](https://blog.cloudera.com/distributed-pricing-engine-using-dockerized-spark-yarn-w-hdp-3-0-part-1-4/) | [Part 2](https://blog.cloudera.com/distributed-pricing-engine-using-dockerized-spark-yarn-w-hdp-3-0-part-2-4/) | [Part 3](https://blog.cloudera.com/distributed-pricing-engine-using-dockerized-spark-yarn-w-hdp-3-0-part-3-4/) | [Part 4](https://blog.cloudera.com/distributed-pricing-engine-using-dockerized-spark-yarn-w-hdp-3-0-part-4-4/)
 
 ![architecture](images/hwxpe-ql-spark-docker-yarn.png)
 
